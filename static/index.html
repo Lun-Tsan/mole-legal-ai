@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoLE 多智能體法律諮詢</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<button class="history-toggle" onclick="toggleSidebar()">🕒 歷史紀錄</button>
+
+<div id="history-sidebar" class="sidebar">
+    <div class="sidebar-header">
+        <h3>查詢紀錄</h3>
+        <button onclick="toggleSidebar()">✕</button>
+    </div>
+    <div id="history-list" class="sidebar-content">
+        <p style="color:#aaa; text-align:center;">載入中...</p>
+    </div>
+</div>
+
+<div class="container">
+    <header>
+        <h1>⚖️ MoLE 法律諮詢小隊</h1>
+        <p>Expert Mixture of Legal Agents - 您的 AI 專屬法律顧問</p>
+    </header>
+    
+<div class="input-section">
+    <textarea id="queryInput" placeholder="請詳細描述您的案件情況..."></textarea>
+    
+    <div class="quick-prompts">
+        <span>試試看：</span>
+        <button onclick="fillPrompt('車禍')">🚗 車禍賠償</button>
+        <button onclick="fillPrompt('租屋')">🏠 租屋糾紛</button>
+        <button onclick="fillPrompt('罵人')">🤬 公然侮辱</button>
+        <button onclick="fillPrompt('勞資')">💼 勞資爭議</button>
+    </div>
+
+    <button id="submitBtn" class="btn-submit" onclick="submitQuery()">開始分析案件</button>
+</div>
+    
+    <div id="process-indicator" class="process-indicator"></div>
+
+    <div id="result-area">
+        <div class="section-title">💡 法律白話建議</div>
+        <div id="res-summary" class="summary-box"></div>
+
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px;">
+                <div class="section-title">📜 引用法條</div>
+                <div id="res-statutes"></div>
+            </div>
+            <div style="flex: 1; min-width: 300px;">
+                <div class="section-title">⚖️ 參考判例</div>
+                <div id="res-cases"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 MoLE Project. 本系統回答僅供參考，正式法律意見請諮詢專業律師。</p>
+    </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
