@@ -3,6 +3,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from api.schemas import ConsultRequest, ConsultResponse
 from pipeline.workflow import run_mole_pipeline
+from fastapi.responses import RedirectResponse
 # --- 新增引入 db ---
 from api.db import init_db, save_record, get_all_records, delete_record
 # 初始化資料庫 (確保檔案存在)
@@ -31,6 +32,11 @@ async def consult(request: ConsultRequest):
     save_record(request.query, result.dict())
     
     return result
+
+@app.get("/")
+async def root():
+    # 當使用者進入首頁時，自動將他轉到網頁介面
+    return RedirectResponse(url="/web/index.html")
 
 # --- 新增：取得歷史紀錄 API ---
 @app.get("/api/history")
